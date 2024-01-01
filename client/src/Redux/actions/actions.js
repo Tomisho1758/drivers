@@ -1,7 +1,22 @@
 import axios from "axios";
-import { GET_DRIVERS,GET_TEAMS,GET_DRIVERS_BY_ID,SET_PAGES,FILTER_DRIVERS,
-  GET_DRIVERS_BY_NAME, FILTER_ORIGIN,FILTER_TEAMS,CLEAR_SEARCH} from "./actions-types";
-
+import { GET_DRIVERS,GET_TEAMS,POST_DRIVER,SET_PAGES,FILTER_DRIVERS,
+  GET_DRIVERS_BY_NAME, FILTER_ORIGIN,FILTER_TEAMS,CLEAR_SEARCH,CLEAN_DETAILS, GET_DETAILS} from "./actions-types";
+  export function createDriver(driverData) {
+    return async function (dispatch) {
+  try {
+        
+        const response = await axios.post("http://localhost:3001/drivers", driverData);
+           console.log("Request Payload:", driverData);
+        
+        dispatch({
+          type: POST_DRIVER,
+          payload: response.data,
+        });
+      } catch (error) {
+        console.error("Error creating Driver:", error.response.data);
+      }
+    };
+  }
 export function getDrivers() {
     return async function (dispatch) {
       try {
@@ -78,4 +93,31 @@ export const filterOrigin = (selectedOrigin) => {
 // Acción
 export const setPages = (pageNumber) => {
   return { type: SET_PAGES, payload: pageNumber };
+};
+
+export function getDetails(id) {
+  return async function (dispatch) {
+    try {
+      let driverData;
+
+      // Hacer la solicitud al servidor para obtener los detalles del conductor
+      driverData = await axios.get(`http://localhost:3001/drivers/${id}`);
+
+      // Verificar si los detalles fueron encontrados
+      if (driverData.data) {
+        console.log('Driver Data:', driverData.data);
+        dispatch({
+          type: GET_DETAILS,
+          payload: driverData.data,
+        });
+        
+        
+      }
+  }catch (error) {
+      console.log(error);
+    };
+}}
+
+export const cleanDetails = () => {
+  return { type: CLEAN_DETAILS };
 };

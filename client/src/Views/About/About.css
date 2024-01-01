@@ -1,0 +1,39 @@
+
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 20px;
+    border: 2px solid #2b050a;
+    border-radius: 8px;
+    background-color: rgba(249, 255, 249, 0.75);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .aboutboton {
+    margin-bottom: 20px;
+  }
+  
+  .about h2 {
+    color: #2b050a;
+  }
+  
+  .aboutgit,
+  .aboutlink {
+    margin-top: 10px;
+  }
+  
+  .aboutgit h3,
+  .aboutlink h3 {
+    color: #2b050a;
+  }
+  
+  .aboutlink a {
+    color: #2b050a;
+    text-decoration: none;
+  }
+  
+  .aboutlink a:hover {
+    text-decoration: underline;
+  }

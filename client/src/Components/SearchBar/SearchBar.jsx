@@ -1,6 +1,7 @@
 import { React, useState } from 'react'
 import {useDispatch} from 'react-redux'
 import {getDriversByName} from "../../Redux/actions/actions"
+import "./SearchBar.css"
 
 const SearchBar = () => {
 const [ searchString, setSearchString ] = useState ("")

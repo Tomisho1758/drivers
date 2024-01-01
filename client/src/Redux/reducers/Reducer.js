@@ -6,7 +6,10 @@ import {
         FILTER_DRIVERS,
         FILTER_ORIGIN,
         SET_PAGES,
-        CLEAR_SEARCH
+        CLEAR_SEARCH,
+        GET_DETAILS,
+        POST_DRIVER,
+CLEAN_DETAILS,
         }from "../actions/actions-types.js"
 
 
@@ -20,12 +23,13 @@ let initialState = {
                      driverById: null,
                      teamsFilter: "all",  
                      originFilter: 'all',   
-                     createdDriver: null,
+                     createdDriver: [],
                      error: null,   
                      driverOrder:[] ,
                      totalPages:1,
                      filterDrivers:[],
-                     filter:"all"
+                     filter:"all",
+                     details: {},
                     };
       
 function rootReducer(state = initialState, action) {
@@ -58,6 +62,7 @@ case GET_TEAMS:
         }
 
         case FILTER_TEAMS:
+          console.log("Original driversBackUp:", state.driversBackUp);
           if (action.payload === "all") {
             return {
               ...state,
@@ -66,7 +71,17 @@ case GET_TEAMS:
             };
           } else {
             const filteredDrivers = [...state.driversBackUp].filter((driver) => {
-              return driver.teams.some((team) => team.name === action.payload);
+              // Check if driver.teams exists before trying to split
+              if (driver.teams) {
+                // Convert the teams string to an array by splitting it
+                const teamsArray = driver.teams.split(',').map(team => team.trim());
+        
+                // Check if the selected team is in the teams array
+                return teamsArray.includes(action.payload);
+              } else {
+                // Handle the case where driver.teams is undefined
+                return false;
+              }
             });
         
             return {
@@ -76,7 +91,14 @@ case GET_TEAMS:
             };
           }
         
-
+          case GET_DETAILS:
+            return {
+              ...state,
+              details: action.payload,
+            };
+      
+          case CLEAN_DETAILS:
+            return { ...state, details: {} };
     
   
 
@@ -128,7 +150,15 @@ case GET_TEAMS:
         originFilter:selectedOrigin,
         drivers: filterDrivers
       }
+      case POST_DRIVER:
+        // Handle the new action type
+        return {
+          ...state,
+         
+          createdDriver: [...state.createdDriver, action.payload],
+        };
   default:
    return state;}}
             
         export default rootReducer;
+        

@@ -1,0 +1,28 @@
+.navBar-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #000000;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navButtons {
+    background-color: #ccc;
+    color: #000000;
+    border: none;
+    padding: 10px;
+    width: 30%;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+  
+  
+  .navButtons:hover {
+    background-color: #999;
+  }

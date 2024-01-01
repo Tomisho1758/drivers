@@ -15,7 +15,7 @@ const formattedTeams= teams.split(",").join(",")
 
   return (
     <div className="card-cont" onClick={handleCardClick}>
-      {/* <Link to={`/details/${id}`}>View Details</Link> */}
+      <Link to={`/details/${id}`}>View Details</Link>
       <div className="card-name-cont">
         <h4>{`${name}`}</h4>
       </div>
@@ -24,10 +24,10 @@ const formattedTeams= teams.split(",").join(",")
       </div>
       <div className="card-stats">
        
-        <p className="card-life-span">Date of Birth: {dob}</p>
-        <p className="card-nationality">Nationality: {nationality}</p>
+        {/* <p className="card-life-span">Date of Birth: {dob}</p>
+        <p className="card-nationality">Nationality: {nationality}</p> */}
         <p className="card-teams">Teams: {formattedTeams}</p>
-        <p className="card-description">{description}</p>
+        {/* <p className="card-description">{description}</p> */}
       </div>
     </div>
   );

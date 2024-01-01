@@ -1,0 +1,55 @@
+/* Detail container */
+.detailModal {
+    background-color: #000000;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; /* Ajustar según sea necesario */
+    padding: 20px;
+    max-width: 600px; /* Ajustar según sea necesario */
+    width: 100%;
+    justify-content: center;
+    display: flex;
+  }
+  
+  /* Detail content */
+  .detailContent {
+    text-align: center;
+  }
+  
+  /* Close button */
+  .closeButton {
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  
+  /* Driver name */
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  /* Driver image */
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  /* Driver details */
+  p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  /* Teams */
+  .formattedTeams {
+    font-weight: bold;
+    color: #333;
+  }
+  

@@ -1,4 +1,3 @@
-// Home.jsx
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDrivers, setPages } from '../../Redux/actions/actions';
@@ -9,7 +8,7 @@ import Ordenator from '../../Components/Sort/Sort';
 import TeamsFilter from '../../Components/TeamFilter/TeamFilter';
 const Home = () => {
   const dispatch = useDispatch();
-  const [currentPage, setPages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
   const PER_PAGE = 9;
 
   const allDrivers = useSelector((state) => {
@@ -26,11 +25,11 @@ const Home = () => {
 
   async function handlePage(pag) {
     try {
-      const pageNumber = parseInt(pag, 10);
-      if (!isNaN(pageNumber)) {
-        if (pageNumber >= 1 && pageNumber <= totalPages) {
+      setCurrentPage(pag, 10);
+      if (!isNaN(currentPage)) {
+        if (currentPage >= 1 && currentPage <= totalPages) {
           // Actualiza la página actual usando la acción setPages
-          dispatch(setPages(pageNumber));
+          dispatch(setPages(currentPage));
         } else {
           console.error('Número de página inválido:', pag);
         }
@@ -49,10 +48,10 @@ const Home = () => {
 
   return (
     <div>
-      <Nav />
+      <Nav setPage={setPages} />
       <Paginado currentPage={currentPage} totalPages={totalPages} handlePage={handlePage} />
       <Cards allDrivers={allDrivers} />
-      <TeamsFilter setPage={setPages} />
+     
         <Ordenator setPage={setPages} />
     </div>
   );

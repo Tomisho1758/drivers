@@ -1,21 +1,27 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector, Provider } from 'react-redux';
-import { getDrivers } from './Redux/actions/actions';
-
+import { Route, Routes, Link, BrowserRouter as Router } from "react-router-dom";
+import DetailsPage from "./Views/Detail//Detail";
+import About from './Views/About/About';
 import Home from './Views/Home/home';
+import CreateDriver from './Views/Create/Form';
 
 function App() {
  
-  // Asegúrate de que allDogs sea un array antes de intentar mapearlo
+  
 
 
   return (
-   
-      <div>
-        {/* Pasa allDogs como una prop a Cards */}
-        <Home  />
-      </div>
-    
+    <Router>
+
+    <Routes>
+        
+        <Route path='/' element={<Home />} />
+        <Route path='/details/:id' element={<DetailsPage />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/create' element={<CreateDriver />} />
+      </Routes>
+    </Router>
   );
 }
 
