@@ -5,7 +5,7 @@ import Nav from '../Nav/Nav';
 import Cards from '../../Components/Cards/Cards';
 import Paginado from '../../Components/Paginado/Paginado';
 import Ordenator from '../../Components/Sort/Sort';
-import TeamsFilter from '../../Components/TeamFilter/TeamFilter';
+
 const Home = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(0);

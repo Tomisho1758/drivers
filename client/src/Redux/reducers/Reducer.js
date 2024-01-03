@@ -124,14 +124,21 @@ case GET_TEAMS:
           sortedDriverCopy= [...state.drivers].sort((a,b)=>
           a.dob.localeCompare(b.dob)
           );
-          break         
-     }
+          break;
+          default:
+            sortedDriverCopy = [...state.driversBackUp];
+        }
+        return {
+          ...state,
+          drivers:[ ...sortedDriverCopy],
+         
+        };
      case CLEAR_SEARCH:
       return{
         ...state,
         drivers:state.driverOrder,
         currentPage: 1,
-        totalPages : Math.ceil(state.driverOrder.length/PER_PAGE)
+        totalPages : Math.ceil(state.driverOrder.length)
       }
      case FILTER_ORIGIN:
       const selectedOrigin = action.payload;

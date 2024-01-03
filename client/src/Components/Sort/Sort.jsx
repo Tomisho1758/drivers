@@ -26,8 +26,8 @@ const Ordenator = ({ setPage }) => {
     <div className='sort'>
       {searchD.length > 1 && <button name='aToZ' onClick={handleFilter} className='button-ordenator'>&#10607; A-Z</button>}
       {searchD.length > 1 && <button name='zToA' onClick={handleFilter} className='button-ordenator'>&#10607; Z-A</button>}
-      {searchD.length > 1 && <button name="attackDesc" onClick={handleFilter} className='button-ordenator'>- ATTACK</button>}
-      {searchD.length > 1 && <button name="attackAsc" onClick={handleFilter} className='button-ordenator'>+ ATTACK</button>}
+      {searchD.length > 1 && <button name="youngToOld" onClick={handleFilter} className='button-ordenator'>Young to old</button>}
+      {searchD.length > 1 && <button name="oldToYoung" onClick={handleFilter} className='button-ordenator'> Old to young</button>}
       {searchD.length > 1 && (
         <button
           name="numeric"

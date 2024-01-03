@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
-import { createDriver } from '../../Redux/actions/actions';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { createDriver, getTeams } from '../../Redux/actions/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { format } from 'date-fns';
+import './Form.css';
+
 const CreateDriver = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -10,12 +13,24 @@ const CreateDriver = () => {
     nationality: '',
     dob: '',
   });
-  const [disabler, setDisabler] = useState(true);
-  const [successMessage, setSuccessMessage] = useState("");
-  const [input, setInput] = useState(formData)
+
+  const [disabler, setDisabler] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+  // const [teamsData, setTeamsData] = useState([]); // Estado para almacenar los datos de los equipos
   const dispatch = useDispatch();
+const teamsData = useSelector((state)=> state.Teams)
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    // Validar el formato de fecha antes de actualizar el estado
+    if (name === 'dob' && value.trim() !== '') {
+      const dobDate = new Date(value);
+      if (isNaN(dobDate.getTime())) {
+        console.error('Invalid date format for dob');
+        return;
+      }
+    }
+
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -23,43 +38,45 @@ const CreateDriver = () => {
   };
 
   const handleTeamsChange = (e) => {
-    // Puedes manejar la selección de equipos aquí, por ejemplo, obteniendo los IDs seleccionados
-    const selectedTeams = Array.from(e.target.selectedOptions, (option) => option.value);
+    const selectedTeams = Array.from(e.target.selectedOptions, (option) => Number(option.value));
     setFormData((prevData) => ({
       ...prevData,
       teams: selectedTeams,
     }));
   };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    // Disable the button to prevent multiple clicks
     setDisabler(true);
   
     try {
-      const response = await dispatch(createDriver(input));
+      const dobDate = new Date(formData.dob);
   
-      if (response && response.error) {
-        alert('Error creating Driver:', response.error);
-        // Handle error as needed
-        setSuccessMessage("");
-      } else {
-        console.log('Response from server:', response);
-        // Reset the form or handle success as needed
-        setInput(formData);
-        setSuccessMessage("Driver successfully created!");
-        alert("Driver successfully created!"); // Display the success message using alert
+      if (isNaN(dobDate.getTime())) {
+        throw new Error('Invalid date of birth');
       }
+  
+      const formattedDOB = format(dobDate, 'yyyy-MM-dd');
+      const updatedInput = { ...formData, dob: formattedDOB };
+  
+      console.log('Updated Input:', updatedInput); // Log the updated input
+  
+      const response = await dispatch(createDriver(updatedInput));
+  
+      // Rest of the code remains unchanged...
     } catch (error) {
-      console.error('Error creating Driver:', error);
-      // Handle error as needed
-      setSuccessMessage("");
+      console.error('Error creating Driver:', error.message);
+      setSuccessMessage('');
     } finally {
-      // Enable the button after the request is complete (whether success or failure)
       setDisabler(false);
     }
   };
+  
+
+  
+
+
   return (
     <form onSubmit={handleSubmit}>
       <label>
@@ -77,10 +94,12 @@ const CreateDriver = () => {
       <label>
         Teams:
         <select multiple name="teams" value={formData.teams} onChange={handleTeamsChange}>
-          {/* Aquí puedes mapear tus equipos existentes y mostrar opciones */}
-          <option value="1">Team 1</option>
-          <option value="2">Team 2</option>
-          {/* ... */}
+          {/* Mapear equipos existentes y mostrar opciones */}
+          {teamsData.map((team) => (
+            <option key={team.id} value={team.id}>
+              {team.name}
+            </option>
+          ))}
         </select>
       </label>
       <br />
@@ -103,7 +122,9 @@ const CreateDriver = () => {
       </label>
       <br />
 
-      <button type="submit">Create Driver</button>
+      <button type="submit" disabled={disabler}>
+        Create Driver
+      </button>
     </form>
   );
 };

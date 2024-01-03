@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom"; 
 import "./Card.css";
 
-const Card = ({ id, name, image, teams, description, nationality, dob }) => {
+const Card = ({ id, name, image, teams }) => {
   
-const formattedTeams= teams.split(",").join(",")
+const formattedTeams= teams?.split(",").join(",")
  
   const [isDetailVisible, setIsDetailVisible] = useState(false);
 

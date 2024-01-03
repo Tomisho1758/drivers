@@ -1,23 +1,23 @@
 import React from "react";
 
 function Paginado({ currentPage, totalPages, handlePage }) {
-  console.log(currentPage, totalPages);
-  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+  
+  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i ++);
 
 
   return (
     <div className="paginado">
-      <button onClick={() => handlePage(currentPage - 1)} disabled={currentPage <= 1}>
+      <button onClick={() => handlePage(currentPage - 1)} disabled={currentPage <= 0}>
         &lt; Previous
       </button>
 
       {pageNumbers.map((pageNumber) => (
         <button key={pageNumber} onClick={() => handlePage(pageNumber)}>
-          {pageNumber}
+          {pageNumber+1}
         </button>
       ))}
 <button
-  onClick={() => currentPage < totalPages && handlePage(currentPage + 1)}
+  onClick={() => currentPage +1 <= totalPages && handlePage(currentPage + 1)}
   disabled={currentPage >= totalPages}
 >
   Next &gt;
