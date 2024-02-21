@@ -7,7 +7,7 @@ function About() {
     <div>
          <div className="about">
             <div className="aboutboton">
-                <Link to={"/"}>
+                <Link className="aboutboton" to={"/Home"}>
                      <button>Home</button>
                 </Link>
             </div>
@@ -15,7 +15,7 @@ function About() {
                 <h2>Tomas Moukarzel</h2>
             </div>
             <div className="aboutgit">
-                <h3>Github: <a href="https://github.com/Tomillo1758"> Tomillo1758</a></h3>
+                <h3>Github: <a href="https://github.com/Tomisho1758"> Tomillo1758</a></h3>
             </div>
             <div className="aboutlink">
                 <h3>Linkledin: </h3><a href="linkedin.com/in/tomas-elias-moukarzel-924a29144"> Tomas-Moukarzel</a>

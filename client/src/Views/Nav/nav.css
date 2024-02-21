@@ -1,12 +1,13 @@
 .navBar-container {
-    display: flex;
+  display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
     background-color: #000000;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
   }
   
   .navButtons {

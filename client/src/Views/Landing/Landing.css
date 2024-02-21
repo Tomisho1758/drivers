@@ -1,0 +1,66 @@
+/* Landing page container */
+.landing-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000000; /* Fondo oscuro, puedes cambiarlo */
+  color: #ffffff; /* Texto blanco, puedes cambiarlo */
+}
+
+/* Content inside the landing page */
+.landing-content {
+  text-align: center;
+}
+
+/* Heading style */
+.landing-content h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Paragraph style */
+.landing-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+/* Image style */
+.landing-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); /* Sombra blanca, puedes cambiarlo */
+}
+.description{
+  display: flex;
+}
+footer{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main{
+  display: flex;
+    justify-content: center
+}
+h1{
+  font-size: 3.2em;
+    line-height: 1.1;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    border: black;
+    border-block-style: initial;
+}
+a{
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+  display: flex;
+  /* align-content: center; */
+  align-items: center;
+  justify-content: center;
+}

@@ -5,7 +5,9 @@
   max-width: 400px;
   margin: 0 auto;
 }
-
+body{
+  background-color: rgb(73, 156, 228);
+}
 /* Form label */
 label {
   margin-top: 10px;

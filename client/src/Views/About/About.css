@@ -1,39 +1,53 @@
-
+/* About container */
 .about {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    margin: 20px;
-    border: 2px solid #2b050a;
-    border-radius: 8px;
-    background-color: rgba(249, 255, 249, 0.75);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .aboutboton {
-    margin-bottom: 20px;
-  }
-  
-  .about h2 {
-    color: #2b050a;
-  }
-  
-  .aboutgit,
-  .aboutlink {
-    margin-top: 10px;
-  }
-  
-  .aboutgit h3,
-  .aboutlink h3 {
-    color: #2b050a;
-  }
-  
-  .aboutlink a {
-    color: #2b050a;
-    text-decoration: none;
-  }
-  
-  .aboutlink a:hover {
-    text-decoration: underline;
-  }
+  background-color: #000000;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 10px;
+  width: 300px;
+  text-align: center;
+}
+
+/* About name */
+.aboutname {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* About links */
+.aboutgit,
+.aboutlink {
+  margin-top: 5px;
+}
+
+.about a {
+  color: #777;
+  text-decoration: none;
+}
+
+.about a:hover {
+  color: #333;
+  text-decoration: underline;
+}
+
+/* About button */
+.aboutboton button {
+  background-color: #333;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.aboutboton button:hover {
+  background-color: #555;
+}

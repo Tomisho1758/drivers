@@ -1,4 +1,4 @@
-// En tu manejador (createDriverHandler.js)
+
 const createDriver = require('../controllers/createD');
 const { Driver } = require("../db");
 
@@ -12,7 +12,7 @@ const createDriverHandler = async (req, res) => {
     
     res.status(201).json(result);
   } catch (error) {
-    console.error("Error in createDriverHandler:", error); // Agrega esta línea
+    console.error("Error in createDriverHandler:", error); 
     res.status(500).json({ error: "Internal Server Error" });
   }
 };

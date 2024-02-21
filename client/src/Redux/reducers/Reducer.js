@@ -45,8 +45,7 @@ function rootReducer(state = initialState, action) {
          drivers: action.payload, 
          driversBackUp: action.payload, 
            };
-            
-// Cambia esto
+
 case GET_TEAMS:
   return {
     ...state,
@@ -71,15 +70,15 @@ case GET_TEAMS:
             };
           } else {
             const filteredDrivers = [...state.driversBackUp].filter((driver) => {
-              // Check if driver.teams exists before trying to split
+             
               if (driver.teams) {
-                // Convert the teams string to an array by splitting it
+         
                 const teamsArray = driver.teams.split(',').map(team => team.trim());
         
-                // Check if the selected team is in the teams array
+               
                 return teamsArray.includes(action.payload);
               } else {
-                // Handle the case where driver.teams is undefined
+              
                 return false;
               }
             });
@@ -158,7 +157,7 @@ case GET_TEAMS:
         drivers: filterDrivers
       }
       case POST_DRIVER:
-        // Handle the new action type
+      
         return {
           ...state,
          

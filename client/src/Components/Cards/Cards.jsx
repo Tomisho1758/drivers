@@ -1,7 +1,5 @@
-// Cards.jsx
-
 import React, { useState } from 'react';
-import Card from '../Card/Card';
+import Card from '../Card/card';
 import "./Cards.css";
 const Cards = ({ allDrivers }) => {
 
@@ -12,6 +10,7 @@ const Cards = ({ allDrivers }) => {
           key={driver.id}
           id={driver.id}
           name={driver.name}
+          surname={driver.surname}
           image={driver.image}
           teams={driver.teams}
           description={driver.description}
@@ -19,7 +18,7 @@ const Cards = ({ allDrivers }) => {
           dob={driver.dob}
         />
       ))}
-      {/* Agrega aquí la paginación */}
+     
     </div>
   );
 };

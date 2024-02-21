@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import  "./Detail.css";
+import "./Detail.css";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetails } from "../../Redux/actions/actions";
@@ -9,6 +9,7 @@ const DetailsPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log(id)
     dispatch(getDetails(id));
   }, [dispatch, id]);
 
@@ -17,34 +18,42 @@ const DetailsPage = () => {
   if (!driver) {
     return <div>No driver found for the provided ID.</div>;
   }
-  const formattedTeams = driver.teams
-  ? driver.teams.split(", ").join(" - ")
-  : 'Unknown';
- 
-  
-console.log("driver.teams:", driver.teams);
-console.log("formattedTeams:", formattedTeams);
+
+  // Función para formatear equipos según la estructura del objeto
+  const formatTeams = (teams) => {
+    if (Array.isArray(teams)) {
+      return teams.map((team) => team.name).join(" - ");
+    } else if (typeof teams === "string") {
+      return teams;
+    } else {
+      return "Unknown";
+    }
+  };
+  const formattedImage = typeof driver.image === 'object' ? driver.image.url : driver.image;
+  const formattedTeams = formatTeams(driver.teams);
+
+  const formattedName =
+    driver.name?.forename && driver.name?.surname
+      ? `${driver.name.forename} ${driver.name.surname}`
+      : driver.name;
+      console.log(id,formattedTeams,formattedName)
   return (
-    <div className='detailModal'>
-      <div className='detailContent'>
-        <Link to="/" className='closeButton'>
+    <div className="detailModal">
+      <div className="detailContent">
+        <Link to="/Home" className="closeButton">
           Close
         </Link>
-        <h2>{`${driver.name?.forename} ${driver.name?.surname}`}</h2>
+        <h2>{`${formattedName}`}</h2>
 
-        <img src={driver.image?.url} alt={driver.name} />
+        <img src={formattedImage} alt={driver.name} />
 
         <p>DoB: {driver.dob}</p>
         <p>Teams: {formattedTeams}</p>
-        <p>Description: {driver.description} kg</p>
-        <p>Nationality: {driver.nationality} cm</p>
+        <p>Description: {driver.description} </p>
+        <p>Nationality: {driver.nationality} </p>
       </div>
     </div>
   );
 };
 
 export default DetailsPage;
-
-
-
-

@@ -90,7 +90,7 @@ export const filterOrigin = (selectedOrigin) => {
   return {type : FILTER_ORIGIN,
           payload: selectedOrigin}
 };
-// Acción
+
 export const setPages = (pageNumber) => {
   return { type: SET_PAGES, payload: pageNumber };
 };
@@ -100,12 +100,12 @@ export function getDetails(id) {
     try {
       let driverData;
 
-      // Hacer la solicitud al servidor para obtener los detalles del conductor
+     
       driverData = await axios.get(`http://localhost:3001/drivers/${id}`);
 
-      // Verificar si los detalles fueron encontrados
+      
       if (driverData.data) {
-        console.log('Driver Data:', driverData.data);
+        // console.log('Driver Data:', driverData.data);
         dispatch({
           type: GET_DETAILS,
           payload: driverData.data,

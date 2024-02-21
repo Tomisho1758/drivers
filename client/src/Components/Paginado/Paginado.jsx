@@ -7,16 +7,16 @@ function Paginado({ currentPage, totalPages, handlePage }) {
 
   return (
     <div className="paginado">
-      <button onClick={() => handlePage(currentPage - 1)} disabled={currentPage <= 0}>
+      <button className="buttonPag" onClick={() => handlePage(currentPage - 1)} disabled={currentPage <= 0}>
         &lt; Previous
       </button>
 
       {pageNumbers.map((pageNumber) => (
-        <button key={pageNumber} onClick={() => handlePage(pageNumber)}>
+        <button className="buttonPag" key={pageNumber} onClick={() => handlePage(pageNumber)}>
           {pageNumber+1}
         </button>
       ))}
-<button
+<button className="buttonPag"
   onClick={() => currentPage +1 <= totalPages && handlePage(currentPage + 1)}
   disabled={currentPage >= totalPages}
 >

@@ -13,10 +13,10 @@ const getTeamsDb = async () => {
       return teams.concat(driverTeams);
     }, []);
 
-    // Eliminar duplicados
+    
     const uniqueTeams = [...new Set(allTeams)];
 
-    // Obtener los equipos de la base de datos
+   
     const teamsFromDb = await Promise.all(uniqueTeams.map(async (teamName) => {
       const [team] = await Teams.findOrCreate({
         where: { name: teamName },

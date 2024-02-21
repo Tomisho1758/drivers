@@ -1,5 +1,5 @@
-// En el archivo teamsHandler.js
-const createTeam = require('../controllers/createT'); // Asegúrate de tener el módulo createTeam correctamente importado
+
+const createTeam = require('../controllers/createT'); 
 
 const createTeamHandler = async (req, res) => {
   const { name } = req.body;

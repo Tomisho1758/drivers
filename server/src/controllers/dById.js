@@ -5,7 +5,7 @@ const { Driver, Teams } = require("../db");
 const getDriverById = async (id) => {
   try {
     const dbDriverById = await Driver.findByPk(id, {
-      attributes: ['id', 'name', 'image', 'description', 'nationality', 'dob'],
+      attributes: ['id', 'name', 'image', 'description', 'nationality', 'dob','surname'],
       include: [
         {
           model: Teams,
@@ -17,12 +17,12 @@ const getDriverById = async (id) => {
       ],
     });
 
-    // If a record is found in the database, return it
+
     if (dbDriverById) {
       return dbDriverById;
     }
 
-    // If no record is found in the database or no ID is provided, query the API
+    
     const response = await axios.get(
       `http://localhost:5000/drivers/${id}`
     );

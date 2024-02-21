@@ -7,7 +7,7 @@ const getDriversDb = async () => {
       {
         model: Teams,
         attributes: ["name"],
-        through: { attributes: [] }, // To exclude unnecessary attributes from the join table
+        through: { attributes: [] }, 
       },
     ],
   });
@@ -15,7 +15,7 @@ const getDriversDb = async () => {
 };
 
 const getDriversApi = async () => {
-  // Adjust the API endpoint and parameters according to your needs
+  
   const response = await axios.get(`http://localhost:5000/drivers`);
   return response.data;
 };
@@ -36,13 +36,13 @@ const getAllDrivers = async () => {
   }));
   
   const transformedDriversDb = driversDb.map((dbDriver) => ({
-    id: dbDriver.ID,
-    name: `${dbDriver.name} ${dbDriver.surname}`, 
-    image: dbDriver.image.url,          
+    id: dbDriver.id,
+    name: `${dbDriver.name} `, 
+    image: dbDriver.image,          
     dob: dbDriver.dob,
-    nationality: dbDriver.nationality,
-    // teams: dbDriver.Teams.map((t) => t.name),
+    nationality: dbDriver.nationality,   
     description: dbDriver.description,
+    teams: dbDriver.teams,
     source: 'Database',
   }));
   

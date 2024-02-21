@@ -1,0 +1,26 @@
+/* Sort container */
+.sort {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+  }
+  
+  /* Sort button */
+  .button-ordenator {
+    background-color: #333;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .button-ordenator:hover {
+    background-color: #555;
+  }
+  

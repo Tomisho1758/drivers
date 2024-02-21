@@ -50,9 +50,10 @@ const Home = () => {
     <div>
       <Nav setPage={setPages} />
       <Paginado currentPage={currentPage} totalPages={totalPages} handlePage={handlePage} />
+       <Ordenator setPage={setPages} />
       <Cards allDrivers={allDrivers} />
      
-        <Ordenator setPage={setPages} />
+       
     </div>
   );
 };

@@ -8,7 +8,7 @@ export default function Nav({setPage}) {
     <div className='navBar-container'>
      <div className='navButtons'> 
     
-      <button><a href="/">Home</a></button>
+      <button><a href="/Home">Home</a></button>
       
       
       <button><a href="/create">Create</a></button>

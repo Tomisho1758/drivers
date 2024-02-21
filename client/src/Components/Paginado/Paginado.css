@@ -1,0 +1,20 @@
+.paginado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; 
+  }
+  
+  .buttonPag{
+    border-color: blue;
+  }
+  
+  .paginado button.active {
+    font-weight: bold;
+  }
+  
+  .paginado button:disabled {
+    color: gray; 
+    cursor: not-allowed;
+  }
+  

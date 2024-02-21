@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { filterDrivers,filterOrigin,  } from '../../Redux/actions/actions';
 
-
+import './Sort.css'
 
 const Ordenator = ({ setPage }) => {
   const searchD = useSelector((state) => state.drivers)
